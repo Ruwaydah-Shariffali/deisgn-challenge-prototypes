@@ -29,18 +29,25 @@
       {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
 
       {{ govukTaskList({
-        idPrefix: "first-section",
+        idPrefix: "Personal details",
         items: [
           {
             title: {
-              text: "Name of first task"
+              text: "Identity details "
             },
-            href: "#",
-            status: completedStatus
+            href: "/public-facing/full-name",
+            status: incompleteStatus
           },
           {
             title: {
-              text: "Name of second task"
+              text: "Address"
+            },
+            href: "#",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Contact details "
             },
             href: "#",
             status: incompleteStatus
