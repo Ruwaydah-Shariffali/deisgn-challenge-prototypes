@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+ <form class="form" action="/public-facing/cya-place-of-work" method="post">
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "place-of-work",
+   value: data['place-of-work'],
+  fieldset: {
+    legend: {
+      text: "Where will you be working?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Select all that apply"
+  },
+  items: [
+    {
+      value: "Amusement parks",
+      text: "Amusement parks"
+    },
+
+    {
+      value: "Circuses",
+      text: "Circuses"
+    },
+
+ {
+      value: "Hospitals",
+      text: "Hospitals"
+    },
+    
+ {
+      value: "Parties",
+      text: "Parties"
+    },
+
+     {
+      value: "Shopping mall",
+      text: "Shopping mall"
+    }
+    
+    
+  ]
+}) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

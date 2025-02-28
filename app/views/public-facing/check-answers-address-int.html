@@ -16,24 +16,24 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
       <h1 class="govuk-heading-xl">
-        Check your personal details answers 
+        Check your answers
       </h1>
 
       {{ govukSummaryList({
         rows: [
-          {
+         {
             key: {
-              text: "Full name"
+              text: "Is your home address a UK address or international address?"
             },
             value: { 
-              text: data['full-name']
+              text: data['UkAddress']
             },
             actions: {
               items: [
                 {
-                  href: "/public-facing/full-name",
+                  href: "/public-facing/home-address",
                   text: "Change",
-                  visuallyHiddenText: "Full name"
+                  visuallyHiddenText: "Is your home address a UK address or international address?"
                 }
               ]
             }
@@ -41,40 +41,24 @@
           ,
           {
             key: {
-              text: "Date of birth"
+              text: "What is your address?"
             },
-            value: {
-              text: data['dob-day'] + " " + data['dob-month'] | toMonth + " " + data['dob-year']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/public-facing/date-of-birth",
-                  text: "Change",
-                  visuallyHiddenText: "Date of birth"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Documents Provided"
-            },
-            value: {
-              text: data ['identity-documents']
-             
+            value: { 
+             text: (data['addressLine1-int'] + "<br>" + data['addressLine2-int'] + "<br>" + data['addressTown-int'] 
+             + "<br>" + data['addressprs-int'] + "<br>" + data['addressPostcode-int'] + "<br>" + data['addressCountry-int'] ) | safe
             },
             actions: {
               items: [
                 {
-                  href: "/public-facing/provide-identity-documents",
+                  href: "/",
                   text: "Change",
-                  visuallyHiddenText: "Documents Provided"
+                  visuallyHiddenText: "What is your address?"
                 }
               ]
             }
           }
+          
+         
         ]
       }) }}
 

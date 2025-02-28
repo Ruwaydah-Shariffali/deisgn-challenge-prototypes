@@ -16,24 +16,24 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
       <h1 class="govuk-heading-xl">
-        Check your personal details answers 
+        Check your answers before sending your application
       </h1>
 
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Full name"
+              text: "Where will you be working?"
             },
-            value: { 
-              text: data['full-name']
+            value: {
+              text: data['place-of-work']
             },
             actions: {
               items: [
                 {
-                  href: "/public-facing/full-name",
+                  href: "/public-facing/place-of-work",
                   text: "Change",
-                  visuallyHiddenText: "Full name"
+                  visuallyHiddenText: "Place of work"
                 }
               ]
             }
@@ -41,17 +41,17 @@
           ,
           {
             key: {
-              text: "Date of birth"
+              text: "Question 2"
             },
             value: {
-              text: data['dob-day'] + " " + data['dob-month'] | toMonth + " " + data['dob-year']
+              text: "Answer 2"
             },
             actions: {
               items: [
                 {
-                  href: "/public-facing/date-of-birth",
+                  href: "#",
                   text: "Change",
-                  visuallyHiddenText: "Date of birth"
+                  visuallyHiddenText: "Question 2"
                 }
               ]
             }
@@ -59,18 +59,17 @@
           ,
           {
             key: {
-              text: "Documents Provided"
+              text: "Question 3"
             },
             value: {
-              text: data ['identity-documents']
-             
+              text: "Answer 3"
             },
             actions: {
               items: [
                 {
-                  href: "/public-facing/provide-identity-documents",
+                  href: "#",
                   text: "Change",
-                  visuallyHiddenText: "Documents Provided"
+                  visuallyHiddenText: "Question 3"
                 }
               ]
             }
@@ -78,15 +77,19 @@
         ]
       }) }}
 
-      
-      <form action="/public-facing/tasklist" method="post" novalidate>
+      <h2 class="govuk-heading-m">
+        Now send your application
+      </h2>
 
-     <div class="govuk-button-group">
-  <button type="submit" class="govuk-button" data-module="govuk-button">
-    Continue
-  </button>
-  <a class="govuk-link" href="/public-facing/tasklist"> Save and return </a>
-</div>
+      <p>
+        By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
+      </p>
+
+      <form action="/confirmation" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
 
       </form>
 
