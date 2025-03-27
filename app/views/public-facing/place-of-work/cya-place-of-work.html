@@ -15,11 +15,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
+      
+
       <h1 class="govuk-heading-xl">
         Check your answers before sending your application
       </h1>
 
-      {{ govukSummaryList({
+ {% if data["hospitals"] != null %} 
+    {{ govukSummaryList({
         rows: [
           {
             key: {
@@ -31,7 +34,7 @@
             actions: {
               items: [
                 {
-                  href: "/public-facing/place-of-work",
+                  href: "/public-facing/place-of-work/place-of-work",
                   text: "Change",
                   visuallyHiddenText: "Place of work"
                 }
@@ -41,28 +44,10 @@
           ,
           {
             key: {
-              text: "Question 2"
+              text: "Which hospital will you be workingv at?"
             },
             value: {
-              text: "Answer 2"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          }
-          ,
-          {
-            key: {
-              text: "Question 3"
-            },
-            value: {
-              text: "Answer 3"
+              text:  data['hospitals']
             },
             actions: {
               items: [
@@ -76,6 +61,33 @@
           }
         ]
       }) }}
+
+     {% else %} 
+
+     {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Where will you be working?"
+            },
+            value: {
+              text: data['place-of-work']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/public-facing/place-of-work/place-of-work",
+                  text: "Change",
+                  visuallyHiddenText: "Place of work"
+                }
+              ]
+            }
+          }
+  
+        ]
+      }) }}
+
+        {% endif %} 
 
       <h2 class="govuk-heading-m">
         Now send your application

@@ -17,20 +17,20 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-       What is your phone number ?
+       What is your email? 
       </h1>
 
-      <form class="form" action="/public-facing/email-address" method="post">
+      <form class="form" action="/public-facing/contact-details/method-of-contact" method="post">
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
 {{ govukInput({
   label: {
-    text: "Telephone number"
+    text: "Email address"
   },
-  id: "telephone-number",
-  name: "telephone-number",
-  value: data['telephone-number']
+  id: "email-address",
+  name: "email-address",
+  value: data['email-address']
 
 
 }) }}

@@ -13,15 +13,15 @@
 
 {% block content %}
 
- <form class="form" action="/public-facing/checkbox-redirect-me" method="post">
+ <form class="form" action="/public-facing/place-of-work/cya-place-of-work" method="post">
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
 {{ govukCheckboxes({
-  name: "place-of-work",
-   value: data['place-of-work'],
+  name: "hospitals",
+   value: data['hospitals'],
   fieldset: {
     legend: {
-      text: "Where will you be working?",
+      text: "Which hospital will you be workingv at?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
@@ -31,21 +31,31 @@
   },
   items: [
     {
-      value: "Amusement parks",
-      text: "Amusement parks"
+      value: "Birmingham Childrens Hospital",
+      text: "Birmingham Childrens Hospital"
     },
 
     {
-      value: "Circuses",
-      text: "Circuses"
+      value: "Cambridge University Hospital",
+      text: "Cambridge University Hospital"
     },
 
  {
-      value: "Hospitals",
-      text: "Hospitals"
+      value: "Great Ormond Street Hospital for Children",
+      text: "Great Ormond Street Hospital for Children"
+    },
+    
+ {
+      value: "Paddington Green Children Hospital ",
+      text: "Paddington Green Children Hospital "
+    },
+
+     {
+      value: "Royal Marsden Hospital",
+      text: "Royal Marsden Hospitall"
     }
     
-
+    
   ]
 }) }}
 
