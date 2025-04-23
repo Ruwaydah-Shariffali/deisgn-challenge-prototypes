@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+ <form class="form" action="/public-facing/skills/performance-prop" method="post">
+
+{% set otherSkillsHtml %}
+{{ govukInput({
+  id: "other-performance-skills",
+  name: "otherPerformanceSkills",
+  type: "performance-skill",
+  spellcheck: true,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Please specify your other performance skills"
+  }
+}) }}
+{% endset -%}
+
+{{ govukCheckboxes({
+  name: "performance-skills",
+  value: data['performance-skills'],
+  fieldset: {
+    legend: {
+      text: "Which of the following performance skills do you have?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Select all options that are relevant to you"
+  },
+  items: [
+    {
+      value: "Juggling",
+      text: "Juggling"
+    },
+    {
+      value: "Balloon modelling",
+      text: "Balloon modelling"
+    },
+    {
+      value: "Unicycling",
+      text: "Unicycling"
+    },
+    {
+      value: "",
+      text: "Other",
+      conditional: {
+        html: otherSkillsHtml
+      }
+    }
+  ]
+}) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

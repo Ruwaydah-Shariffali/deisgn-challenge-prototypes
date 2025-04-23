@@ -15,8 +15,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-       <form class="form" action="/public-facing/tasklist" method="post">
-
       <h1 class="govuk-heading-xl">
         Check your answers before sending your application
       </h1>
@@ -25,17 +23,17 @@
         rows: [
           {
             key: {
-              text: "Telephone number"
+              text: "Do you have experience driving a clown car?"
             },
             value: {
-              text: data['telephone-number']
+              text: (data['car-driving']  + "<br>" + data['yesDriving'] ) | safe
             },
             actions: {
               items: [
                 {
-                  href: "/public-facing/contact-details/telephone-number",
+                  href: "/public-facing/skills/car-driving",
                   text: "Change",
-                  visuallyHiddenText: "Telephone number"
+                  visuallyHiddenText: "Do you have experience driving a clown car?"
                 }
               ]
             }
@@ -43,36 +41,51 @@
           ,
           {
             key: {
-              text: "Email address"
+              text: "Which of the following performance skills do you have?"
             },
             value: {
-              text: data["email-address"]
+              text: (data['performance-skills'] + "<br>" + data['otherPerformanceSkills'] ) | safe
             },
             actions: {
               items: [
                 {
-                  href: "/public-facing/contact-details/email-address",
+                  href: "/public-facing/skills/performance-skills",
                   text: "Change",
-                  visuallyHiddenText: "Email address"
+                  visuallyHiddenText: "Question 2"
                 }
               ]
             }
           }
-          ,
-          {
+          ,{
             key: {
-              text: "Method of Contact"
+              text: "  What is your main performance prop?"
             },
             value: {
-              text: data ['method-of-contact']
-             
+              text: data['prop'] 
             },
             actions: {
               items: [
                 {
-                  href: "/public-facing/contact-details/method-of-contact",
+                  href: "/public-facing/skills/performance-prop",
                   text: "Change",
-                  visuallyHiddenText: "Method of contact"
+                  visuallyHiddenText: "Which of the following performance skills do you have?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Tell us about the funniest routine you performed as a clown."
+            },
+            value: {
+              text:  data['funniest-routine']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/public-facing/skills/funniest-routine",
+                  text: "Change",
+                  visuallyHiddenText: "Tell us about the funniest routine you performed as a clown"
                 }
               ]
             }
@@ -80,9 +93,11 @@
         ]
       }) }}
 
-   
-      <form action="/confirmation" method="post" novalidate>
- <div class="govuk-button-group">
+      
+
+       <form action="/public-facing/tasklist" method="post" novalidate>
+
+     <div class="govuk-button-group">
   <button type="submit" class="govuk-button" data-module="govuk-button">
     Continue
   </button>

@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<form class="form" action="/public-facing/skills/funniest-routine" method="post">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="prop">
+      What is your main performance prop?
+    </label>
+  </h1>
+  <br>
+  <select class="govuk-select" id="prop" name="prop"
+    data-module="autocomplete" data-autoselect="" data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+    <option value="" selected disabled>Select an option</option>
+    <option value="Rubber Chicken">Rubber Chicken</option>
+    <option value="Cream Pie">Cream Pie</option>
+    <option value="Squirting Flower">Squirting Flower</option>
+    <option value="Balloon Animal">Balloon Animal</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

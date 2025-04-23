@@ -24,3 +24,18 @@ router.post('/public-facing/place-of-work/place-of-work', function (req, res) {
     res.redirect('/public-facing/place-of-work/cya-place-of-work')
   }
 })
+
+router.post('/public-facing/identity-details/date-of-birth', function (req, res) {
+  const fullName = req.body['full-name']
+
+  if (!fullName || fullName.trim() === '') {
+    res.render('public-facing/identity-details/full-name', {
+      errorFullName: {
+        text: 'Enter your full name'
+      }
+    })
+  } else {
+    req.session.data['full-name'] = fullName
+    res.redirect('/public-facing/identity-details/date-of-birth')
+  }
+})
