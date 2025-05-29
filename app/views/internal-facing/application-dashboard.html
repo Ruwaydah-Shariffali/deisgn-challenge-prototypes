@@ -1,0 +1,259 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+       All Applications
+      </h1>
+
+      {% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+ 
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Reference"
+    },
+    {
+      text: "Full name"
+    },
+    {
+      text: "Date received"
+    },
+    {
+      text: "Status"
+    }
+    
+  ],
+  rows: [
+    [
+      {
+          key: {
+              text: "Full name"
+            },
+            
+            },
+            actions: {
+              items: [
+                {
+                  href: "/public-facing/identity-details/full-name",
+                  text: "Change",
+                
+                }
+              ]
+            }
+      },
+      {
+        text: "Jim Chuckles"
+      },
+      {
+        text: "02 may 2025"
+      },
+      {
+        text: "In progress"
+      }
+    ],
+    [
+      {
+        text: "CLN-002"
+      },
+      {
+        text: "Sarah McFun"
+      },
+      {
+        text: "05 May 2025"
+      },
+      {
+        text: "Received"
+      }
+    ],
+    [
+      {
+        text: "CLN-003"
+      },
+      {
+        text: "Fizzy Fandango"
+      },
+      {
+        text: "26 Apr 2025"
+       },
+      {
+        text: "Awaiting review"
+      }
+    ],
+    [
+      {
+        text: "CLN-004"
+      },
+      {
+        text: "Jamie Bubbles"
+      },
+      {
+        text: "06 Jan 2025"
+       },
+      {
+        text: "Approved"
+      }
+    ],
+    [
+      {
+        text: "CLN-005"
+      },
+      {
+        text: "Lily Sprinkles"
+      },
+      {
+        text: "25 Apr 2025"
+       },
+      {
+        text: "Rejected"
+      }
+    ],
+    [
+      {
+        text: "CLN-006"
+      },
+      {
+        text: "Charles Chuckley"
+      },
+      {
+        text: "	03 May 2025"
+       },
+      {
+        text: "Awaiting review"
+      }
+    ],
+    [
+      {
+        text: "CLN-007"
+      },
+      {
+        text: "Jack Splinton"
+      },
+      {
+        text: "01 May 2025"
+       },
+      {
+        text: "Approved"
+      }
+    ],
+    [
+      {
+        text: "CLN-008"
+      },
+      {
+        text: "Trixie Poppell"
+      },
+      {
+        text: "02 May 2025"
+       },
+      {
+        text: "Received"
+      }
+    ],
+    [
+      {
+        text: "CLN-009"
+      },
+      {
+        text: "Walter Boots"
+      },
+      {
+        text: "29 Apr 2025"
+       },
+      {
+        text: "Awaiting review"
+      }
+    ],
+    [
+      {
+        text: "CLN-010"
+      },
+      {
+        text: "Simon Honks"
+      },
+      {
+        text: "07 May 2025"
+       },
+      {
+        text: "Received"
+      }
+    ],
+    [
+      {
+        text: "CLN-011"
+      },
+      {
+        text: "Dottie Puffin"
+      },
+      {
+        text: "28 Apr 2025"
+       },
+      {
+        text: "Approved"
+      }
+    ],
+    [
+      {
+        text: "CLN-012"
+      },
+      {
+        text: "Taylor Twinks"
+      },
+      {
+        text: "23 Apr 2025"
+       },
+      {
+        text: "Rejected"
+      }
+    ],
+    [
+      {
+        text: "CLN-013"
+      },
+      {
+        text: "Chris Crumple"
+      },
+      {
+        text: "28 Apr 2025"
+       },
+      {
+        text: "In progress"
+      }
+    ],
+    [
+      {
+        text: "CLN-014"
+      },
+      {
+        text: "Ben Biggins"
+      },
+      {
+        text: "	01 May 2025"
+       },
+      {
+        text: "Approved"
+      }
+    ]
+  ]
+}) }}
+
+    </div>
+  </div>
+
+{% endblock %}
