@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Application dashboard – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,228 +14,124 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    
 
       <h1 class="govuk-heading-l">
        All Applications
       </h1>
 
       {% from "govuk/components/table/macro.njk" import govukTable %}
+      {%- from "govuk/components/tag/macro.njk" import govukTag -%}
 
 {{ govukTable({
- 
+  attributes: { "data-module": "moj-sortable-table" },
   firstCellIsHeader: true,
   head: [
     {
-      text: "Reference"
+      text: "Reference",
+      attributes: { "aria-sort": "ascending" }
     },
     {
-      text: "Full name"
+      text: "Full name",
+      attributes: { "aria-sort": "ascending" }
     },
     {
-      text: "Date received"
+      text: "Date received",
+       attributes: { "aria-sort": "ascending" }
     },
     {
-      text: "Status"
+      text: "Status",
+      attributes: { "aria-sort": "ascending" }
     }
     
   ],
   rows: [
     [
-      {
-        text: "CLN-001"
-      },
-      {
-        text: "Jim Chuckles"
-      },
-      {
-        text: "02 may 2025"
-      },
-      {
-        text: "In progress"
-      }
+      {html: '<a href="/internal-facing/application/CLN-001" class="govuk-link">CLN-001</a>'},
+      {text: "Jim Chuckles"},
+      {text: "20 Mar 2025" },
+      {html: govukTag({ text: "Approved", classes: "govuk-tag--green" })}
     ],
     [
-      {
-        text: "CLN-002"
-      },
-      {
-        text: "Sarah McFun"
-      },
-      {
-        text: "05 May 2025"
-      },
-      {
-        text: "Received"
-      }
+      {html: '<a href="/internal-facing/application/CLN-002" class="govuk-link">CLN-002</a>'},
+      {text: "Sarah McFun"},
+      {text: "23 Mar 2025"},
+      {html: govukTag({ text: "Approved", classes: "govuk-tag--green" })}
     ],
     [
-      {
-        text: "CLN-003"
-      },
-      {
-        text: "Fizzy Fandango"
-      },
-      {
-        text: "26 Apr 2025"
-       },
-      {
-        text: "Awaiting review"
-      }
+      {html: '<a href="/internal-facing/application/CLN-003" class="govuk-link">CLN-003</a>'},
+      {text: "Fizzy Fandango"},
+      {text: "26 Mar 2025"},
+      {html: govukTag({ text: "Approved", classes: "govuk-tag--green" })}
     ],
     [
-      {
-        text: "CLN-004"
-      },
-      {
-        text: "Jamie Bubbles"
-      },
-      {
-        text: "06 Jan 2025"
-       },
-      {
-        text: "Approved"
-      }
+      {html: '<a href="/internal-facing/application/CLN-004" class="govuk-link">CLN-004</a>'},
+      {text: "Jamie Bubbles"},
+      {text: "29 Mar 2025"},
+      {html: govukTag({ text: "Awaiting review", classes: "govuk-tag--orange" }) }
     ],
     [
-      {
-        text: "CLN-005"
-      },
-      {
-        text: "Lily Sprinkles"
-      },
-      {
-        text: "25 Apr 2025"
-       },
-      {
-        text: "Rejected"
-      }
+      {html: '<a href="/internal-facing/application/CLN-005" class="govuk-link">CLN-005</a>'},
+      {text: "Lily Sprinkles"},
+      {text: "05 Apr 2025"},
+      {html: govukTag({ text: "Approved", classes: "govuk-tag--green" })}
     ],
     [
-      {
-        text: "CLN-006"
-      },
-      {
-        text: "Charles Chuckley"
-      },
-      {
-        text: "	03 May 2025"
-       },
-      {
-        text: "Awaiting review"
-      }
+      {html: '<a href="/internal-facing/application/CLN-006" class="govuk-link">CLN-006</a>'},
+      {text: "Charles Chuckley"},
+      {text: "09 Apr 2025"},
+      {html: govukTag({ text: "Rejected", classes: "govuk-tag--red" })}
     ],
     [
-      {
-        text: "CLN-007"
-      },
-      {
-        text: "Jack Splinton"
-      },
-      {
-        text: "01 May 2025"
-       },
-      {
-        text: "Approved"
-      }
+      {html: '<a href="/internal-facing/application/CLN-007" class="govuk-link">CLN-007</a>'},
+      {text: "Jack Splinton"},
+      {text: "11 Apr 2025"},
+      {html: govukTag({ text: "Approved", classes: "govuk-tag--green" })}
     ],
     [
-      {
-        text: "CLN-008"
-      },
-      {
-        text: "Trixie Poppell"
-      },
-      {
-        text: "02 May 2025"
-       },
-      {
-        text: "Received"
-      }
+      {html: '<a href="/internal-facing/application/CLN-008" class="govuk-link">CLN-008</a>'},
+      {text: "Trixie Poppell"},
+      {text: "15 Apr 2025"},
+      {html: govukTag({ text: "Received", classes: "govuk-tag--yellow" }) }
     ],
     [
-      {
-        text: "CLN-009"
-      },
-      {
-        text: "Walter Boots"
-      },
-      {
-        text: "29 Apr 2025"
-       },
-      {
-        text: "Awaiting review"
-      }
+      {html: '<a href="/internal-facing/application/CLN-009" class="govuk-link">CLN-009</a>'},
+      {text: "Walter Boots"},
+      {text: "20 Apr 2025"},
+      {html: govukTag({ text: "Approved", classes: "govuk-tag--green" })}
     ],
     [
-      {
-        text: "CLN-010"
-      },
-      {
-        text: "Simon Honks"
-      },
-      {
-        text: "07 May 2025"
-       },
-      {
-        text: "Received"
-      }
+      {html: '<a href="/internal-facing/application/CLN-010" class="govuk-link">CLN-010</a>'},
+      {text: "Simon Honks"},
+      {text: "24 Apr 2025"},
+      {html: govukTag({ text: "Received", classes: "govuk-tag--yellow" }) }
     ],
     [
-      {
-        text: "CLN-011"
-      },
-      {
-        text: "Dottie Puffin"
-      },
-      {
-        text: "28 Apr 2025"
-       },
-      {
-        text: "Approved"
-      }
+      {html: '<a href="/internal-facing/application/CLN-011" class="govuk-link">CLN-011</a>'},
+      {text: "Dottie Puffin"},
+      {text: "01 May 2025"},
+      {html: govukTag({ text: "In progress", classes: "govuk-tag--blue" }) }
+
     ],
     [
-      {
-        text: "CLN-012"
-      },
-      {
-        text: "Taylor Twinks"
-      },
-      {
-        text: "23 Apr 2025"
-       },
-      {
-        text: "Rejected"
-      }
+      {html: '<a href="/internal-facing/application/CLN-012" class="govuk-link">CLN-012</a>'},
+      {text: "Taylor Twinks"},
+      {text: "05 May 2025"},
+      {html: govukTag({ text: "In progress", classes: "govuk-tag--blue" }) }
+
     ],
     [
-      {
-        text: "CLN-013"
-      },
-      {
-        text: "Chris Crumple"
-      },
-      {
-        text: "28 Apr 2025"
-       },
-      {
-        text: "In progress"
-      }
+      {html: '<a href="/internal-facing/application/CLN-013" class="govuk-link">CLN-013</a>'},
+      {text: "Chris Crumple"},
+      {text: "15 May 2025"},
+      {html: govukTag({ text: "Awaiting review", classes: "govuk-tag--orange" }) }
     ],
     [
-      {
-        text: "CLN-014"
-      },
-      {
-        text: "Ben Biggins"
-      },
-      {
-        text: "	01 May 2025"
-       },
-      {
-        text: "Approved"
-      }
+      {html: '<a href="/internal-facing/application/CLN-014" class="govuk-link">CLN-014</a>'},
+      {text: "Ben Biggins"},
+      {text: "19 May 2025"},
+      {html: govukTag({ text: "In progress", classes: "govuk-tag--blue" }) }
+
     ]
   ]
 }) }}
@@ -243,4 +139,10 @@
     </div>
   </div>
 
+
+
+
 {% endblock %}
+
+
+

@@ -39,3 +39,17 @@ router.post('/public-facing/identity-details/date-of-birth', function (req, res)
     res.redirect('/public-facing/identity-details/date-of-birth')
   }
 })
+
+const applications = require('./data/applications.json');
+
+router.get('/internal-facing/application/:ref', function (req, res) {
+  const application = applications.find(app => app.ref === req.params.ref);
+
+  if (!application) {
+    return res.status(404).render('error');
+  }
+
+  res.render('internal-facing/application-page', { application });
+});
+
+

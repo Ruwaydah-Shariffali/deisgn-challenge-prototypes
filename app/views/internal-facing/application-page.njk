@@ -1,0 +1,88 @@
+{% extends "layouts/main.html" %}
+
+{# Map status to GOV.UK tag colour classes #}
+{% set tagClass = {
+  'Approved': 'govuk-tag--green',
+  'In progress': 'govuk-tag--blue',
+  'Awaiting review': 'govuk-tag--yellow',
+  'Received': 'govuk-tag--yellow',
+  'Rejected': 'govuk-tag--red'
+}[application.status] or 'govuk-tag--grey' %}
+
+{% block pageTitle %}
+  Application page – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({ text: "Back", href: "javascript:window.history.back()" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-xl">
+      {{ application.ref }} Clown Licence Application
+    </h1>
+
+    <!-- Personal details card -->
+    {{ govukSummaryList({
+      card: { title: { text: 'Personal details' } },
+      rows: [
+        { key: { text: 'Full name' }, value: { text: application.fullName } },
+        { key: { text: 'Date of birth' }, value: { text: application.dob } },
+        { key: { text: 'Email address' }, value: { text: application.email } },
+        {
+          key: { text: 'Status' },
+          value: {
+            html: govukTag({ text: application.status, classes: tagClass })
+          }
+        }
+      ]
+    }) }}
+
+    <!-- Additional details card -->
+    {{ govukSummaryList({
+      card: { title: { text: 'Additional details' } },
+      rows: [
+        { key: { text: 'Documents Provided' }, value: { text: 'Passport' } },
+        { key: { text: 'UK or International home address' }, value: { text: 'UK' } },
+        {
+          key: { text: 'Address' },
+          value: { html: "16 flowers avenue,<br>Harrow,<br>London,<br>England,<br>HA8 8ae" }
+        },
+        { key: { text: 'Telephone number' }, value: { text: '7567643098' } },
+        {
+          key: { text: 'Method of Contact' },
+          value: { html: "Email address,<br>Telephone number" }
+        }
+      ]
+    }) }}
+
+    <!-- Skills & workplace card -->
+    {{ govukSummaryList({
+      card: { title: { text: 'Skills & workplace' } },
+      rows: [
+        { key: { text: 'Car driving' }, value: { html: "Yes<br>Small car" } },
+        { key: { text: 'Performance skills' }, value: { html: "Juggling<br>Unicycling" } },
+        { key: { text: 'Performance prop' }, value: { text: "Cream Pie" } },
+        {
+          key: { text: 'Places of work' },
+          value: { html: "Amusement parks<br>Hospitals<br>Shopping mall" }
+        },
+        {
+          key: { text: 'Which Hospitals' },
+          value: {
+            html: "Birmingham Children’s Hospital<br>Paddington Green Children’s Hospital<br>Royal Marsden Hospital"
+          }
+        }
+      ]
+    }) }}
+
+    <form action="/confirmation" method="post" novalidate>
+      <button type="submit" class="govuk-button">Submit application</button>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

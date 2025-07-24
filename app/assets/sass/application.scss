@@ -4,3 +4,37 @@
 // 
 
 // Add extra styles here
+
+
+/* Base style for sortable headers */
+.sortable-table th {
+  position: relative;
+  padding-right: 1.5em;
+}
+
+.sortable-table th::after {
+  content: '';
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0.4em solid transparent;
+  opacity: 0.4;
+}
+
+/* Ascending arrow */
+.sortable-table th.asc::after {
+  border-bottom-color: #0b0c0c; /* GOV.UK black */
+  opacity: 1;
+}
+
+/* Descending arrow */
+.sortable-table th.desc::after {
+  border-top-color: #0b0c0c;
+  opacity: 1;
+}
+
+/* Hover effect */
+.sortable-table th:hover {
+  background-color: #f3f2f1;
+}
